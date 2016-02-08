@@ -1,0 +1,37 @@
+- hosts: localhost
+  tasks:
+    - name: print from playbook
+      debug: msg="in ansible/playbook.yml as user {{ lookup('env','USER') }}"
+
+    - name: install apps from pip
+      become: yes
+      become_user: "root"
+      pip: name={{item}} state=present
+      with_items:
+          - virtualenv
+          - pyyaml
+          - awscli
+          - battleschool
+
+    - name: install homebrew_taps
+      homebrew_tap: tap={{item}} state=present
+      with_items:
+          - gapple/services
+          - pivotal/tap
+          - caskroom/cask
+
+    - name: install apps from homebrew
+      become: yes
+      become_user: "root"
+      homebrew: name={{item}} state=present update_homebrew=yes
+      with_items:
+          - coreutils
+          - git
+          - git-flow
+          - maven
+          - wget
+          - ruby
+          - brew-cask
+          - bash
+          - jmeter
+          - sbt

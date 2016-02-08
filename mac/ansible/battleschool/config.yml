@@ -1,0 +1,27 @@
+---
+sources:
+  local:
+    #- ansible/battleschool/playbook.yml
+
+  url:
+    #- name: playbook.yml
+    #  url: https://db.tt/VcyI9dvr
+
+  git:
+    - name: 'osx'
+      repo: 'https://github.com/wpieters/ansible-osx'
+      playbooks:
+         - adium.yml
+         - chrome-stable.yml
+         - docker-toolbox.yml
+         - dropbox.yml
+         - intellij-idea-community15.yml
+         - istat-menus.yml
+         - iterm2.yml
+         - java8.yml
+         - skype.yml
+         - sourcetree.yml
+         - sublime3.yml
+         - vagrant.yml
+         - virtualbox.yml
+         
