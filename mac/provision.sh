@@ -35,6 +35,8 @@ echo "Done! Doing some config to run local ..."
 echo "127.0.0.1" > ~/ansible_hosts
 export ANSIBLE_HOSTS=./hosts
 
+ansible all -i "localhost," -c local -m shell -a 'echo hello world'
+
 echo "Done! Installing BattelSchool for OS X provisioning ..."
 ansible-playbook --ask-become-pass ansible/playbook.yml
 echo "Done! Provisioning some tools..."
