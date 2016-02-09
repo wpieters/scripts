@@ -21,8 +21,6 @@
           - caskroom/cask
 
     - name: install apps from homebrew
-      become: yes
-      become_user: "root"
       homebrew: name={{item}} state=present update_homebrew=yes
       with_items:
           - coreutils

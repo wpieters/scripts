@@ -8,14 +8,17 @@ if [ ! $(which brew) ]; then
     echo "Done!"
 fi
 echo "Updating brew..."
-brew update && brew doctor
+brew update #&& brew doctor
 
 echo "Checking for Python 2.7 and installing if needed..."
 if [ ! $(which python) ]; then
-    echo "Need to install Python 2.7..."
-    brew install readline gdbm
-    brew install python --universal --framework
-    echo "Done!"
+    PYTHON_VERSION=$(python --version 2>&1)
+    if [[ ! ${PYTHON_VERSION:6:4} == 2.7* ]]; then
+        echo "Need to install Python 2.7..."
+        brew install readline gdbm
+        brew install python --universal --framework
+        echo "Done!"
+    fi
 fi
 echo $(python --version)
   
